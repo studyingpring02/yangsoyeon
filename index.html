@@ -506,6 +506,99 @@
     letter-spacing: 0.05em;
   }
 
+  /* MENU JOURNAL */
+  .menu-section {
+    background: var(--warm-white);
+    padding: 5rem 0;
+    width: 100%;
+  }
+  .menu-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .menu-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 1.2rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(200,128,58,0.1);
+  }
+  .menu-card-header {
+    background: var(--yogurt);
+    padding: 1.4rem 1.6rem 1rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+  }
+  .menu-num {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--caramel);
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+  }
+  .menu-card-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-dark);
+  }
+  .menu-card-body {
+    padding: 1.2rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+  }
+  .menu-insight {}
+  .insight-label {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--caramel-deep);
+    background: rgba(200,128,58,0.1);
+    padding: 0.15rem 0.55rem;
+    border-radius: 0.4rem;
+    margin-bottom: 0.4rem;
+  }
+  .menu-insight p {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+  .menu-tags {
+    padding: 0.8rem 1.6rem 1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    border-top: 1px solid var(--border);
+  }
+  .menu-tag {
+    font-size: 0.7rem;
+    color: var(--text-light);
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 0.2rem 0.6rem;
+    border-radius: 1rem;
+    font-weight: 500;
+  }
+
   /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(30px); }
@@ -532,6 +625,8 @@
     .strengths-grid { grid-template-columns: 1fr; }
     .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
     .why-inner, .strengths-inner { padding: 0 1.5rem; }
+    .menu-grid { grid-template-columns: 1fr; }
+    .menu-inner { padding: 0 1.5rem; }
     .contact-section { padding: 3.5rem 1.5rem; }
   }
 </style>
@@ -544,6 +639,7 @@
   <ul class="nav-links">
     <li><a href="#why">지원동기</a></li>
     <li><a href="#experience">경력</a></li>
+    <li><a href="#menu-journal">메뉴개발</a></li>
     <li><a href="#strengths">강점</a></li>
     <li><a href="#contact">연락처</a></li>
   </ul>
@@ -839,6 +935,153 @@
           팀과 함께 일하는 법을 압니다.
         </p>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- MENU JOURNAL -->
+<div class="menu-section" id="menu-journal">
+  <div class="menu-inner">
+    <span class="section-tag">Menu Development Journal</span>
+    <h2 class="section-title">메뉴개발 일지</h2>
+    <p class="section-sub">
+      타깃 고객과 매장 환경을 먼저 분석하고, 기존 재료를 최대한 활용해 새로운 맛을 만들어냈습니다.
+      6가지 파스타 메뉴 개발 과정을 기록했습니다.
+    </p>
+    <div class="menu-grid">
+
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <span class="menu-num">01</span>
+          <h3 class="menu-card-title">된장 삼겹 파스타</h3>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-insight">
+            <span class="insight-label">기획 배경</span>
+            <p>4~50대 여성 주고객층과 한국적 인테리어를 고려해 된장찌개에서 영감을 받은 파스타로 개발. 느끼함 없이 한 그릇을 깔끔하게 비울 수 있는 맛이 핵심.</p>
+          </div>
+          <div class="menu-insight">
+            <span class="insight-label">재료 전략</span>
+            <p>기존 재료인 돼지고기·마늘·버섯을 그대로 활용. 육수도 기존 것을 사용해 원가는 낮추되, 된장으로 차별화된 감칠맛 구현.</p>
+          </div>
+        </div>
+        <div class="menu-tags">
+          <span class="menu-tag">한식 퓨전</span>
+          <span class="menu-tag">된장</span>
+          <span class="menu-tag">원가 최적화</span>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <span class="menu-num">02</span>
+          <h3 class="menu-card-title">해산물 순두부 파스타</h3>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-insight">
+            <span class="insight-label">기획 배경</span>
+            <p>4~50대 여성 주고객층과 한국적 인테리어에 맞춰 기존 빠쉐 메뉴에서 새로운 방향성으로 개발.</p>
+          </div>
+          <div class="menu-insight">
+            <span class="insight-label">재료 전략</span>
+            <p>순두부를 제외한 기존 재료 그대로 활용. 조미료는 줄이고 해산물 본연의 시원한 맛을 극대화해 깔끔한 국물 느낌 구현.</p>
+          </div>
+        </div>
+        <div class="menu-tags">
+          <span class="menu-tag">해산물</span>
+          <span class="menu-tag">순두부</span>
+          <span class="menu-tag">시원한 맛</span>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <span class="menu-num">03</span>
+          <h3 class="menu-card-title">크림콩 파스타</h3>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-insight">
+            <span class="insight-label">기획 배경</span>
+            <p>4~50대 여성 주고객층과 한국적 분위기를 고려한 메뉴. 콩비지를 선호하지 않는 사람도 즐길 수 있는 맛으로 개발하는 것이 목표.</p>
+          </div>
+          <div class="menu-insight">
+            <span class="insight-label">재료 전략</span>
+            <p>민찌 대신 다진 고기 활용, 마늘과 콩비지를 크림과 결합. 콩 비린맛 대신 고소함을 극대화해 "호불호 없는 맛"이라는 반응 획득.</p>
+          </div>
+        </div>
+        <div class="menu-tags">
+          <span class="menu-tag">크림</span>
+          <span class="menu-tag">콩비지</span>
+          <span class="menu-tag">고소함</span>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <span class="menu-num">04</span>
+          <h3 class="menu-card-title">샐러드 파스타</h3>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-insight">
+            <span class="insight-label">기획 배경</span>
+            <p>여름철 샐러드 수요 증가에 착안. 채소가 빨리 시들어 로스가 컸던 문제를 해결하고자 파스타 면을 차갑게 씻어 비빔면처럼 즐기는 방식으로 개발.</p>
+          </div>
+          <div class="menu-insight">
+            <span class="insight-label">재료 전략</span>
+            <p>기존 샐러드 재료를 그대로 활용해 재료 낭비를 줄이고, 파스타 면 추가로 포만감과 다양성 동시 확보.</p>
+          </div>
+        </div>
+        <div class="menu-tags">
+          <span class="menu-tag">콜드 파스타</span>
+          <span class="menu-tag">재료 효율화</span>
+          <span class="menu-tag">여름 메뉴</span>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <span class="menu-num">05</span>
+          <h3 class="menu-card-title">바질 토마토 파스타</h3>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-insight">
+            <span class="insight-label">기획 배경</span>
+            <p>학원가 특성상 배달 수요가 높아 안 매운 파스타 필요. 기존 토마토 파스타의 단맛이 강하다는 불호 의견을 해결하고자 개발.</p>
+          </div>
+          <div class="menu-insight">
+            <span class="insight-label">재료 전략</span>
+            <p>다른 메뉴에 이미 사용하던 바질페스토를 추가 활용. 단맛을 줄이고 상큼함을 더해 바질과 단맛 모두 과하지 않은 균형 잡힌 맛 구현.</p>
+          </div>
+        </div>
+        <div class="menu-tags">
+          <span class="menu-tag">토마토</span>
+          <span class="menu-tag">바질페스토</span>
+          <span class="menu-tag">배달 최적화</span>
+        </div>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-card-header">
+          <span class="menu-num">06</span>
+          <h3 class="menu-card-title">명란 오일 파스타</h3>
+        </div>
+        <div class="menu-card-body">
+          <div class="menu-insight">
+            <span class="insight-label">기획 배경</span>
+            <p>가게 시그니처 메뉴들이 오일 파스타 계열임을 파악. 라인업을 강화하면서 트렌디한 명란을 접목한 신메뉴로 개발.</p>
+          </div>
+          <div class="menu-insight">
+            <span class="insight-label">재료 전략</span>
+            <p>기존 보유 재료인 명란을 활용해 추가 원가 부담 없이 신메뉴 구성. 시그니처 라인과의 일관성을 유지하면서 차별화 포인트 확보.</p>
+          </div>
+        </div>
+        <div class="menu-tags">
+          <span class="menu-tag">명란</span>
+          <span class="menu-tag">오일 파스타</span>
+          <span class="menu-tag">시그니처 라인업</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
