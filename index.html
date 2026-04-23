@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>양소연 포트폴리오 | 메뉴개발 기획자</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #FAF7F0;
+    --warm-white: #FFFDF8;
+    --yogurt: #FFF8EC;
+    --caramel: #C8803A;
+    --caramel-light: #E8A85A;
+    --caramel-deep: #9A5E1E;
+    --berry: #C15470;
+    --berry-light: #E87A96;
+    --matcha: #6B8C5A;
+    --matcha-light: #8EAF78;
+    --text-dark: #2A1F14;
+    --text-mid: #5C4A32;
+    --text-light: #A08060;
+    --border: rgba(200, 128, 58, 0.15);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250, 247, 240, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+  }
+  .nav-logo {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--caramel-deep);
+    letter-spacing: 0.05em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--caramel); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 6rem 3rem 3rem;
+    position: relative;
+    overflow: hidden;
+    background: var(--warm-white);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200,128,58,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(107,140,90,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--caramel);
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    padding: 0.35rem 0.9rem;
+    border: 1px solid rgba(200,128,58,0.35);
+    border-radius: 2rem;
+  }
+  .hero-name {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--text-dark);
+    margin-bottom: 0.4rem;
+  }
+  .hero-role {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--caramel);
+    margin-bottom: 1.5rem;
+  }
+  .hero-desc {
+    font-size: 1rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    max-width: 480px;
+  }
+  .hero-desc strong { color: var(--caramel-deep); font-weight: 700; }
+  .hero-cta-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--caramel);
+    color: white;
+    padding: 0.8rem 1.8rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--caramel-deep); transform: translateY(-2px); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--caramel-deep);
+    padding: 0.8rem 1.8rem;
+    border-radius: 2rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    border: 1.5px solid var(--caramel-deep);
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { background: var(--caramel-deep); color: white; }
+
+  .hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-circle-wrap {
+    position: relative;
+    width: 380px;
+    height: 380px;
+  }
+  .hero-circle-bg {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--yogurt);
+    border: 2px dashed rgba(200,128,58,0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .circle-stat {
+    text-align: center;
+  }
+  .circle-stat-num {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--caramel-deep);
+    display: block;
+  }
+  .circle-stat-label {
+    font-size: 0.78rem;
+    color: var(--text-light);
+    letter-spacing: 0.1em;
+    display: block;
+  }
+  .circle-divider {
+    width: 40px;
+    height: 1px;
+    background: rgba(200,128,58,0.3);
+  }
+  .floating-badge {
+    position: absolute;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 0.6rem 1rem;
+    font-size: 0.78rem;
+    color: var(--text-mid);
+    font-weight: 500;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    white-space: nowrap;
+  }
+  .badge-1 { top: 20px; left: -20px; }
+  .badge-2 { bottom: 60px; right: -30px; }
+  .badge-3 { top: 140px; right: -40px; }
+  .badge-dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+  }
+  .dot-caramel { background: var(--caramel); }
+  .dot-berry { background: var(--berry); }
+  .dot-matcha { background: var(--matcha); }
+
+  /* SECTION BASE */
+  section {
+    padding: 5rem 3rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    color: var(--caramel);
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .section-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.8rem;
+  }
+  .section-sub {
+    font-size: 1rem;
+    color: var(--text-mid);
+    margin-bottom: 3rem;
+    max-width: 560px;
+    line-height: 1.8;
+  }
+  .divider-line {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 0;
+  }
+
+  /* WHY YOAJEONG */
+  .why-section {
+    background: var(--warm-white);
+    padding: 5rem 0;
+    width: 100%;
+  }
+  .why-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+  .why-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 1.2rem;
+    padding: 2rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .why-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(200,128,58,0.12);
+  }
+  .why-card-icon {
+    width: 44px; height: 44px;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  .icon-caramel { background: rgba(200,128,58,0.12); }
+  .icon-berry { background: rgba(193,84,112,0.1); }
+  .icon-matcha { background: rgba(107,140,90,0.1); }
+  .icon-blue { background: rgba(56,115,181,0.1); }
+  .why-card-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.6rem;
+  }
+  .why-card-desc {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+  }
+
+  /* EXPERIENCE TIMELINE */
+  .timeline {
+    position: relative;
+    margin-top: 2.5rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--caramel-light), rgba(200,128,58,0.1));
+  }
+  .timeline-item {
+    padding-left: 3rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+  .timeline-dot {
+    position: absolute;
+    left: 0; top: 4px;
+    width: 17px; height: 17px;
+    border-radius: 50%;
+    background: var(--caramel);
+    border: 3px solid var(--cream);
+    box-shadow: 0 0 0 2px rgba(200,128,58,0.3);
+  }
+  .timeline-date {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+  }
+  .timeline-company {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.15rem;
+  }
+  .timeline-role {
+    font-size: 0.82rem;
+    color: var(--caramel);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6rem;
+  }
+  .timeline-desc {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+  }
+  .tag-pill {
+    display: inline-block;
+    padding: 0.25rem 0.7rem;
+    border-radius: 1rem;
+    font-size: 0.72rem;
+    font-weight: 500;
+    margin: 0.2rem 0.15rem 0 0;
+    letter-spacing: 0.05em;
+  }
+  .pill-caramel { background: rgba(200,128,58,0.12); color: var(--caramel-deep); }
+  .pill-berry { background: rgba(193,84,112,0.1); color: var(--berry); }
+  .pill-matcha { background: rgba(107,140,90,0.1); color: var(--matcha); }
+  .pill-blue { background: rgba(56,115,181,0.1); color: #2F72B5; }
+
+  /* STRENGTHS */
+  .strengths-section {
+    background: var(--yogurt);
+    width: 100%;
+    padding: 5rem 0;
+  }
+  .strengths-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 3rem;
+  }
+  .strengths-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .strength-card {
+    background: white;
+    border-radius: 1.2rem;
+    padding: 2rem 1.6rem;
+    border: 1px solid var(--border);
+    text-align: center;
+    transition: transform 0.2s;
+  }
+  .strength-card:hover { transform: translateY(-3px); }
+  .strength-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+  .strength-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+  }
+  .strength-desc {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+
+  /* CONTACT */
+  .contact-section {
+    background: var(--text-dark);
+    color: white;
+    padding: 5rem 3rem;
+    width: 100%;
+  }
+  .contact-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .contact-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+  .contact-sub {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.8;
+  }
+  .contact-info-box {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 1.2rem;
+    padding: 2rem;
+  }
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.9rem;
+  }
+  .contact-row:last-child { border-bottom: none; }
+  .contact-label {
+    color: rgba(255,255,255,0.5);
+    width: 60px;
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+  }
+  .contact-value {
+    color: rgba(255,255,255,0.9);
+    font-weight: 400;
+  }
+  .contact-highlight { color: var(--caramel-light); font-weight: 500; }
+
+  footer {
+    background: #1A1208;
+    color: rgba(255,255,255,0.35);
+    text-align: center;
+    font-size: 0.78rem;
+    padding: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left > * {
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-left > *:nth-child(5) { animation-delay: 0.5s; }
+  .hero-visual { animation: fadeUp 0.9s 0.3s ease both; }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 5rem 1.5rem 3rem; }
+    .hero-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .hero-visual { display: none; }
+    section { padding: 3.5rem 1.5rem; }
+    .why-grid { grid-template-columns: 1fr; }
+    .strengths-grid { grid-template-columns: 1fr; }
+    .contact-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .why-inner, .strengths-inner { padding: 0 1.5rem; }
+    .contact-section { padding: 3.5rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">양소연</div>
+  <ul class="nav-links">
+    <li><a href="#why">지원동기</a></li>
+    <li><a href="#experience">경력</a></li>
+    <li><a href="#strengths">강점</a></li>
+    <li><a href="#contact">연락처</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-tag">🍦 메뉴개발 기획자 포트폴리오</div>
+      <h1 class="hero-name">양소연</h1>
+      <p class="hero-role">베이커리 생산 × 데이터 분석 × 메뉴 기획</p>
+      <p class="hero-desc">
+        전통조리, 보건학, 조리외식경영을 거친 <strong>다학제적 배경</strong>과
+        요거트 아이스크림·디저트 시장을 향한 뜨거운 열정으로,
+        <strong>요아정의 새로운 맛을 만들어낼 준비</strong>가 되어 있습니다.
+      </p>
+
+    </div>
+    <div class="hero-visual">
+      <div class="hero-circle-wrap">
+        <div class="hero-circle-bg">
+          <div class="circle-stat">
+            <span class="circle-stat-num">2년 7개월</span>
+            <span class="circle-stat-label">베이커리·F&B 경력</span>
+          </div>
+          <div class="circle-divider"></div>
+          <div class="circle-stat">
+            <span class="circle-stat-num">상위 1%</span>
+            <span class="circle-stat-label">AI 데이터 분석 대회 성과</span>
+          </div>
+          <div class="circle-divider"></div>
+          <div class="circle-stat">
+            <span class="circle-stat-num">신메뉴 개발</span>
+            <span class="circle-stat-label">직접 기획·제안·실행 경험</span>
+          </div>
+        </div>
+        <div class="floating-badge badge-1">
+          <span class="badge-dot dot-caramel"></span>비건 베이커리 생산
+        </div>
+        <div class="floating-badge badge-2">
+          <span class="badge-dot dot-matcha"></span>TOEIC 840점
+        </div>
+        <div class="floating-badge badge-3">
+          <span class="badge-dot dot-berry"></span>석사 재학 중
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY YOAJEONG -->
+<div class="why-section" id="why">
+  <div class="why-inner">
+    <span class="section-tag">Why 요아정</span>
+    <h2 class="section-title">요아정 메뉴개발팀에<br>제가 필요한 이유</h2>
+    <p class="section-sub">
+      단순히 "아이스크림을 좋아해서"가 아닙니다.
+      베이커리 생산, 재료 발주, 레시피 개발, 직원 교육까지 F&B 밸류체인 전반을 경험한 사람이
+      메뉴개발 테이블에 앉아야 한다고 믿습니다.
+    </p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-card-icon icon-caramel">🧁</div>
+        <h3 class="why-card-title">현장에서 나온 메뉴 기획력</h3>
+        <p class="why-card-desc">
+          명조커피앤베이커리 근무 중, 부족한 점을 사장님과 직접 소통해 <strong>신메뉴 출시로 이어진</strong> 경험이 있습니다.
+          비건비거닝에서는 빵·디저트·샌드위치 전 라인을 직접 생산하며 레시피를 체득했습니다.
+          아이디어에서 멈추지 않고 실제 제품으로 완성하는 힘이 있습니다.
+        </p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon icon-matcha">📊</div>
+        <h3 class="why-card-title">데이터로 트렌드를 읽는 눈</h3>
+        <p class="why-card-desc">
+          AI 교육에서 <strong>제주도 교통량 예측 대회 상위 1%</strong> 성과(LightGBM+XGBoost 앙상블)를 거뒀습니다.
+          성균관대 AI 수업에서는 추천 시스템과 대시보드를 직접 구현했습니다.
+          감으로 하는 메뉴 기획이 아닌, 데이터 기반의 소비자 인사이트를 반영할 수 있습니다.
+        </p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon icon-berry">🎓</div>
+        <h3 class="why-card-title">조리외식경영 석사 과정</h3>
+        <p class="why-card-desc">
+          경희대학교 대학원 조리외식경영학과에서 <strong>외식 산업 전반의 이론과 경영 전략</strong>을 학습 중입니다.
+          단순 레시피 개발을 넘어, 시장성·수익성·브랜드 방향성을 함께 고민하는 메뉴 기획자로 성장하고 있습니다.
+        </p>
+      </div>
+      <div class="why-card">
+        <div class="why-card-icon icon-blue">🔁</div>
+        <h3 class="why-card-title">다양한 카테고리 경험</h3>
+        <p class="why-card-desc">
+          양식·베이커리·비건 디저트·카페 음료를 모두 다뤄본 이력 덕분에
+          <strong>요거트 아이스크림이라는 카테고리에 접목할 수 있는 아이디어</strong>의 스펙트럼이 넓습니다.
+          현재 바타드에서 페스츄리 생산 아르바이트를 병행하며 감각을 유지하고 있습니다.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <span class="section-tag">Experience</span>
+  <h2 class="section-title">주요 경력 & 활동</h2>
+  <p class="section-sub">
+    매장 운영의 처음부터 끝까지 — 생산, 발주, 교육, 메뉴개발을 두루 경험했습니다.
+  </p>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2026.02 ~ 현재</div>
+      <div class="timeline-company">바타드</div>
+      <div class="timeline-role">베이커리 아르바이트 | 페스츄리 생산·베이커리 보조</div>
+      <p class="timeline-desc">
+        고급 베이커리 브랜드에서 페스츄리 라인을 직접 담당하며 정밀한 생산 기술을 유지 중입니다.
+      </p>
+      <div style="margin-top:0.5rem;">
+        <span class="tag-pill pill-caramel">페스츄리</span>
+        <span class="tag-pill pill-caramel">베이커리 생산</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2025.08 ~ 2026.01</div>
+      <div class="timeline-company">플디케이크샵</div>
+      <div class="timeline-role">아르바이트 | 케이크 판매 · 케이크 데코</div>
+      <p class="timeline-desc">
+        케이크 데코레이션과 고객 판매를 담당하며 디저트 제품의 비주얼 기획력을 키웠습니다.
+      </p>
+      <div style="margin-top:0.5rem;">
+        <span class="tag-pill pill-berry">케이크 데코</span>
+        <span class="tag-pill pill-berry">고객응대</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2025.02 ~ 현재</div>
+      <div class="timeline-company">경희대학교 대학원</div>
+      <div class="timeline-role">석사 재학 중 | 조리외식경영학과</div>
+      <p class="timeline-desc">
+        외식 브랜드 기획, 메뉴 전략, 소비자 행동론 등 외식업 경영 전반을 체계적으로 연구합니다.
+      </p>
+      <div style="margin-top:0.5rem;">
+        <span class="tag-pill pill-blue">외식경영</span>
+        <span class="tag-pill pill-blue">메뉴전략</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2024.12 ~ 2025.05</div>
+      <div class="timeline-company">음컴퍼니</div>
+      <div class="timeline-role">양식 담당</div>
+      <p class="timeline-desc">
+        빵 전 종류를 직접 생산하고, 보완사항을 사장님과 직접 소통해 레시피를 수정·발전시켰습니다.
+        이 과정에서 신메뉴 출시로 이어졌으며, 수량 체크부터 발주까지 전담했습니다.
+      </p>
+      <div style="margin-top:0.5rem;">
+        <span class="tag-pill pill-caramel">베이커리 생산</span>
+        <span class="tag-pill pill-caramel">신메뉴 기획</span>
+        <span class="tag-pill pill-caramel">발주 관리</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2024.04 ~ 2024.10</div>
+      <div class="timeline-company">명조커피앤베이커리</div>
+      <div class="timeline-role">베이커리 생산 | 메뉴개발 · 발주</div>
+      <p class="timeline-desc">
+        빵 전 품목 직접 생산, 발주 전담. 메뉴 개선 아이디어를 사장과 소통해 신메뉴 출시로 연결.
+        주얼리 모델 병행 (골드앤)으로 브랜드 비주얼 감각도 보유.
+      </p>
+      <div style="margin-top:0.5rem;">
+        <span class="tag-pill pill-caramel">메뉴개발</span>
+        <span class="tag-pill pill-matcha">커뮤니케이션</span>
+        <span class="tag-pill pill-caramel">발주</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2023.05 ~ 2024.04</div>
+      <div class="timeline-company">사생활 송파점</div>
+      <div class="timeline-role">주임/계장 | 메뉴개발 · 주방직원 · 발주 · 직원교육</div>
+      <p class="timeline-desc">
+        샐러드·리조또·파스타·카츠 등 전반적인 주방 운영 총괄. 직원 교육 자료를 직접 작성해
+        알기 쉽게 전달. 알바 면접·채용까지 담당한 준관리자 역할 수행.
+      </p>
+      <div style="margin-top:0.5rem;">
+        <span class="tag-pill pill-blue">팀 관리</span>
+        <span class="tag-pill pill-blue">직원 교육</span>
+        <span class="tag-pill pill-caramel">메뉴개발</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2023.04 ~ 2023.07</div>
+      <div class="timeline-company">비건비거닝</div>
+      <div class="timeline-role">비건 베이커리 | 계약직 (능력 인정으로 계약 연장 제안)</div>
+      <p class="timeline-desc">
+        빵·디저트·샌드위치 전 라인 생산. 능력을 인정받아 원하는 만큼 계약 연장을 제안받았습니다
+        (학업 사정으로 1개월만 연장). 비건 식품 트렌드에 대한 깊은 이해를 갖추게 되었습니다.
+      </p>
+      <div style="margin-top:0.5rem;">
+        <span class="tag-pill pill-matcha">비건</span>
+        <span class="tag-pill pill-matcha">디저트 생산</span>
+        <span class="tag-pill pill-matcha">트렌드 감각</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2023.02 ~ 2023.08</div>
+      <div class="timeline-company">AI 교육 (성균관대학교 주최)</div>
+      <div class="timeline-role">데이터 분석 · 추천 시스템 · 대시보드 구현</div>
+      <p class="timeline-desc">
+        AI를 활용한 데이터 분석 학습. 베스트셀러 기반 추천 시스템 구현, 데이터 시각화 대시보드 프로젝트 수행.
+      </p>
+      <div style="margin-top:0.5rem;">
+        <span class="tag-pill pill-blue">AI · 데이터분석</span>
+        <span class="tag-pill pill-blue">추천 시스템</span>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2022.09 ~ 2023.02</div>
+      <div class="timeline-company">AI 교육 (새싹)</div>
+      <div class="timeline-role">머신러닝 · 예측 모델 구축</div>
+      <p class="timeline-desc">
+        제주도 도로 교통량 예측 대회에서 LightGBM+XGBoost 앙상블 모델로 <strong>상위 1% 수상</strong>.
+      </p>
+      <div style="margin-top:0.5rem;">
+        <span class="tag-pill pill-blue">머신러닝</span>
+        <span class="tag-pill pill-blue">상위 1% 수상</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider-line"></div>
+
+<!-- STRENGTHS -->
+<div class="strengths-section" id="strengths">
+  <div class="strengths-inner">
+    <span class="section-tag">Core Strengths</span>
+    <h2 class="section-title">핵심 역량</h2>
+    <p class="section-sub">
+      손으로 만들고, 머리로 분석하고, 입으로 설득하는 — 세 가지가 동시에 가능한 메뉴 기획자입니다.
+    </p>
+    <div class="strengths-grid">
+      <div class="strength-card">
+        <div class="strength-icon">🍞</div>
+        <h3 class="strength-title">직접 만드는 생산 기술</h3>
+        <p class="strength-desc">
+          베이커리·파스타·비건 디저트까지 다양한 카테고리를 직접 생산한 경험.
+          레시피를 이론이 아닌 손으로 이해합니다.
+        </p>
+      </div>
+      <div class="strength-card">
+        <div class="strength-icon">💡</div>
+        <h3 class="strength-title">아이디어를 제품으로 전환</h3>
+        <p class="strength-desc">
+          신메뉴 제안 → 사장 설득 → 실제 출시로 이어진 구체적 경험.
+          아이디어를 현실화하는 실행력이 강점입니다.
+        </p>
+      </div>
+      <div class="strength-card">
+        <div class="strength-icon">📈</div>
+        <h3 class="strength-title">데이터 기반 트렌드 분석</h3>
+        <p class="strength-desc">
+          AI 데이터 분석 교육 수료, 상위 1% 대회 성과.
+          소비자 니즈를 데이터로 읽어 메뉴 기획에 반영합니다.
+        </p>
+      </div>
+      <div class="strength-card">
+        <div class="strength-icon">🌱</div>
+        <h3 class="strength-title">비건·헬시 트렌드 이해</h3>
+        <p class="strength-desc">
+          비건비거닝 근무 경험으로 비건 식품 생산 기술과 트렌드 감각 보유.
+          건강 디저트 시장의 방향성을 정확히 파악합니다.
+        </p>
+      </div>
+      <div class="strength-card">
+        <div class="strength-icon">🎯</div>
+        <h3 class="strength-title">끈기 & 책임감</h3>
+        <p class="strength-desc">
+          감기몸살에도 실습을 완수하고, 데이터 분석 공부와 베이커리 현장을 동시에 병행.
+          맡은 일은 반드시 완성합니다.
+        </p>
+      </div>
+      <div class="strength-card">
+        <div class="strength-icon">🗣️</div>
+        <h3 class="strength-title">소통 & 교육 능력</h3>
+        <p class="strength-desc">
+          직원 교육 자료 직접 작성, 알바 채용 면접 진행, 고객 갈등 조율 경험.
+          팀과 함께 일하는 법을 압니다.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div>
+      <p style="font-size:0.75rem; letter-spacing:0.18em; color:rgba(255,255,255,0.4); margin-bottom:1rem; text-transform:uppercase;">Contact</p>
+      <h2 class="contact-title">요아정의 다음 메뉴,<br>함께 만들고 싶습니다.</h2>
+      <p class="contact-sub">
+        단순히 레시피를 제안하는 것이 아니라, 소비자 데이터와 현장 경험을 결합해
+        브랜드를 성장시키는 메뉴 기획자가 되겠습니다.
+        언제든지 연락 주세요.
+      </p>
+    </div>
+    <div class="contact-info-box">
+      <div class="contact-row">
+        <span class="contact-label">이름</span>
+        <span class="contact-value">양소연 (1997년생, 만 29세)</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">연락처</span>
+        <span class="contact-value contact-highlight">010-7216-6596</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">이메일</span>
+        <span class="contact-value contact-highlight">pringring97@naver.com</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">거주지</span>
+        <span class="contact-value">서울 송파구 신천동</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">학력</span>
+        <span class="contact-value">경희대학교 대학원 조리외식경영학과 석사 재학</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">어학</span>
+        <span class="contact-value">TOEIC 840점 · 바리스타 자격증 (SCA)</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">희망근무</span>
+        <span class="contact-value">서울 전 지역 · 연봉 면접 후 결정</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2026 양소연 포트폴리오 · 메뉴개발 기획자 · 요아정 지원용
+</footer>
+
+</body>
+</html>
